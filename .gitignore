@@ -1,5 +1,11 @@
+#Python specific
+*.pyc
+
 #Pycharm
 .idea/
 
 #uWSGI config file
 mFRI.ini
+
+#database
+mFRI.db

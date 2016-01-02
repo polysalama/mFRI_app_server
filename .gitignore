@@ -1,2 +1,5 @@
 #Pycharm
-.idea
+.idea/
+
+#uWSGI config file
+mFRI.ini

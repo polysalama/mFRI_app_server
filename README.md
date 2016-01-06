@@ -12,4 +12,5 @@ $ cd mFRI_app_server
 $ virtualenv env
 $ . env/bin/activate
 $ pip install flask flask-restful SQLAlchemy Flask-SQLAlchemy
+& python run.py
 ```

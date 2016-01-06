@@ -2,9 +2,6 @@
 from flask import Flask
 from flask_restful import Api
 
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
-
 # Import SQLAlchemy
 from flask.ext.sqlalchemy import SQLAlchemy
 
@@ -22,8 +19,7 @@ app.config.from_object('config')
 db = SQLAlchemy(app)
 
 # Import resources
-from module_auth.user import User
+from module_users.user import User
 
-# Bind resources to url
-api.add_resource(User, '/user/<int:id>', endpoint='user')
+
 

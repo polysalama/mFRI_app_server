@@ -1,6 +1,6 @@
 from app import db
 
-class UserBase(db.Model):
+class UserBaseModel(db.Model):
 
     __abstract__ = True
 
@@ -8,7 +8,7 @@ class UserBase(db.Model):
     id = db.Column(db.INTEGER, primary_key=True)
 
 
-class UserStudent(UserBase):
+class UserStudentModel(UserBaseModel):
     
     __tablename__ = 'Auth_students'
 

@@ -9,3 +9,6 @@ mFRI.ini
 
 #database
 mFRI.db
+
+#Python virtual env.
+.env/

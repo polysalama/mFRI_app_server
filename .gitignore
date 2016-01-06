@@ -1,5 +1,6 @@
 #Python specific
 *.pyc
+*.pyo
 
 #Pycharm
 .idea/

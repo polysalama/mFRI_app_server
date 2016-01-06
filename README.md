@@ -1,8 +1,8 @@
 # mFRI_app_server
 
-Server back-end for mFri mobile app.
+Server back-end for mFri app.
 
-## Want to develop on mFri?
+## Want to develop mFRI_app_server?
 
 This gets you started:
 

@@ -5,6 +5,7 @@ from app import api, ma, db, MOODLE_URL
 from urllib2 import urlopen, URLError, HTTPError
 
 
+# Users resource [GET, POST]
 class Users(Resource):
 
     def __init__(self):
@@ -47,6 +48,7 @@ class Users(Resource):
         return user_schema.dump(user).data, 201
 
 
+# User resource [GET, PUT, DELETE]
 class User(Resource):
 
     def get(self, idx):
@@ -65,15 +67,19 @@ class User(Resource):
         abort(404)
 
 
+# Users schema for de/serialization
 class UserSchema(ma.ModelSchema):
 
     class Meta:
+        # Use database model
         model = UserModel
 
+    # create url for specific user
     urls = ma.Hyperlinks({
         'self': ma.URLFor('user', idx='<id>'),
     }, dump_only=True)
 
+# create schemas
 user_schema = UserSchema()
 users_schema = UserSchema(only=('id', 'name', 'urls'), many=True)
 

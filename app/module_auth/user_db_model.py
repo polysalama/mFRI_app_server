@@ -13,7 +13,7 @@ class UserBaseModel(db.Model):
     # Moodle role
     token = db.Column(db.String(64))
 
-
+# Users model
 class UserModel(UserBaseModel):
     
     __tablename__ = 'mod_users_users'

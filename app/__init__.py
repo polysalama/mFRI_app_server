@@ -6,6 +6,7 @@ from flask_marshmallow import Marshmallow
 # Import SQLAlchemy
 from flask.ext.sqlalchemy import SQLAlchemy
 
+# Url for moodle
 MOODLE_URL = 'https://ucilnica.fri.uni-lj.si'
 
 # Define the uWSGI application object

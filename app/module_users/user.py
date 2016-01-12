@@ -16,7 +16,6 @@ class Users(Resource):
 
     def get(self):
         users = UserStudentModel.query.all()
-		#test
         return user_schema.dump(users, many=True).data
 
     def post(self):

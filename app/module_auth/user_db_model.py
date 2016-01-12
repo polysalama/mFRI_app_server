@@ -1,17 +1,22 @@
 from app import db
 
 
+# Abstract Base model
 class UserBaseModel(db.Model):
 
     __abstract__ = True
 
     # User id
     id = db.Column(db.INTEGER, primary_key=True)
+    # Moodle user token
+    token = db.Column(db.String(64))
+    # Moodle role
+    token = db.Column(db.String(64))
 
 
-class UserStudentModel(UserBaseModel):
+class UserModel(UserBaseModel):
     
-    __tablename__ = 'Auth_students'
+    __tablename__ = 'mod_users_users'
 
     # Student vpisna st.
     vpisna_st = db.Column(db.INTEGER)
@@ -19,8 +24,6 @@ class UserStudentModel(UserBaseModel):
     name = db.Column(db.String(128))
     # Student email
     email = db.Column(db.String(64))
-    # Moodle user token
-    token = db.column(db.String(64))
 
     def __int__(self, vpisna_st, name, email, token):
 

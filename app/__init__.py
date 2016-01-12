@@ -6,6 +6,8 @@ from flask_marshmallow import Marshmallow
 # Import SQLAlchemy
 from flask.ext.sqlalchemy import SQLAlchemy
 
+MOODLE_URL = 'https://ucilnica.fri.uni-lj.si'
+
 # Define the uWSGI application object
 app = Flask(__name__)
 ma = Marshmallow(app)
@@ -21,8 +23,8 @@ app.config.from_object('config')
 db = SQLAlchemy(app)
 
 # Import resources
-from module_users.user import User
-from module_users.user import Users
+from module_auth.user import User
+from module_auth.user import Users
 
 
 

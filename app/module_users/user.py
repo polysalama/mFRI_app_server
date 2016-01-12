@@ -3,6 +3,7 @@ import json
 from user_db_model import UserStudentModel
 from app import api, ma, db
 from urllib2 import urlopen
+from marshmallow import post_dump
 
 
 class Users(Resource):
@@ -15,7 +16,7 @@ class Users(Resource):
 
     def get(self):
         users = UserStudentModel.query.all()
-        return {"users": user_schema.dump(users, many=True).data}
+        return user_schema.dump(users, many=True).data
 
     def post(self):
         args = self.reqparse.parse_args()
@@ -41,6 +42,13 @@ class UserSchema(ma.ModelSchema):
 
     class Meta:
         model = UserStudentModel
+
+    @post_dump(pass_many=True)
+    def wrap_if_many(self, data, many=False):
+        if many:
+            only = ('id', 'url')
+            return {"users": data}
+        return data
 
     url = ma.Hyperlinks({
         'self': ma.URLFor('user', idx='<id>'),

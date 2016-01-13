@@ -16,7 +16,7 @@ class UserBaseModel(db.Model):
 # Users model
 class UserModel(UserBaseModel):
     
-    __tablename__ = 'mod_users_users'
+    __tablename__ = 'mod_auth_users'
 
     # Student vpisna st.
     vpisna_st = db.Column(db.INTEGER)

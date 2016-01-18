@@ -4,7 +4,7 @@ from flask_restful import Api
 from flask_marshmallow import Marshmallow
 
 # Import SQLAlchemy
-from flask.ext.sqlalchemy import SQLAlchemy
+from flask_sqlalchemy import SQLAlchemy
 
 # Define the uWSGI application object
 app = Flask(__name__)
@@ -23,6 +23,8 @@ db = SQLAlchemy(app)
 # Import resources
 from module_users.user import User
 from module_users.user import Users
+
+from module_lpp.stations import Stations
 
 
 

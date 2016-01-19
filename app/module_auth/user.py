@@ -3,6 +3,7 @@ import json
 from user_db_model import UserModel
 from app import api, ma, db, MOODLE_URL
 from urllib2 import urlopen, URLError, HTTPError
+from marshmallow import fields
 
 
 # Users resource [GET, POST]
@@ -44,11 +45,12 @@ class Users(Resource):
                     abort(500)
 
             user = UserModel(name=moodle_user_data['fullname'], vpisna_st=int(moodle_user_data['idnumber']),
-                                                                                     email=moodle_user_data['email'],
-                                                                                     token=token)
+                             email=moodle_user_data['email'], token=token)
             db.session.add(user)
             db.session.commit()
-        return user_schema.dump(user).data, 201
+            sc = UserSchema(extra={"picture": moodle_user_data['profileimageurl']})
+            return sc.dump(user).data, 201
+        return user_schema.dump(user).data, 200
 
 
 # User resource [GET, PUT, DELETE]
@@ -81,6 +83,7 @@ class UserSchema(ma.ModelSchema):
     urls = ma.Hyperlinks({
         'self': ma.URLFor('user', idx='<id>'),
     }, dump_only=True)
+
 
 # create schemas
 user_schema = UserSchema()

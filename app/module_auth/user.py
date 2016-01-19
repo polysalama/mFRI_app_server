@@ -33,6 +33,9 @@ class Users(Resource):
                 moodle_user_data = json.load(urlopen(MOODLE_URL + '/webservice/rest/server.php?wstoken='
                                                       + token + '&wsfunction=core_user_get_users_by_id&userids[]=' +
                                                       str(user_id) + '&moodlewsrestformat=json'))[0]
+            except KeyError as e:
+                if e.message == 'token':
+                    return {"Error": "bad username or password"}, 401
             except HTTPError as e:
                 return {"Error": "bad moodle url"}, 500
             except URLError as e:
